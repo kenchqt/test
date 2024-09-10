@@ -75,7 +75,7 @@ SELECT * FROM orderDetails ORDER BY priceEach DESC LIMIT 10 OFFSET 0; //shows or
 SELECT c.customerNumber AS id, c.customerName AS name, SUM(od.priceEach) AS total_price FROM customers AS c
 JOIN orders AS o ON o.customerNumber = c.customerNumber
 JOIN orderdetails AS od ON od.orderNumber = o.orderNumber
-WHERE c.customerNumber = 282;
+WHERE c.customerNumber = 282; //join table orders and orderdetails to table customers
 
 ACTIVITY:
 customerNumber=477
