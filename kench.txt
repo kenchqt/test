@@ -1,0 +1,86 @@
+CREATE DATABASE school; //create a database
+
+show databases; //shows all databases 
+
+use school; //select the database 
+
+show tables; //shows all tables 
+
+CREATE TABLE students (
+	id int,
+	first_name varchar (20),
+	last_name varchar (20),
+	age (2) int,
+	address_line_1 varchar (30),
+	address_line_2 varchar (30),
+	baranggay varchar (30),
+	city varchar (20),
+	postal int(5)); //create table students(column1 datatype, column2 datatype);
+
+show tables; //shows all tables
+
+describle students; //shows table students information
+
+
+CREATE TABLE instructor (
+	id int(10) primary key auto_increment,
+	first_name varchar (20),
+	last_name varchar (20),
+	age (2) int,
+	address_line_1 varchar (30),
+	address_line_2 varchar (30),
+	baranggay varchar (30),
+	city varchar (20),
+	postal int(5)); //create table instructor
+
+CREATE TABLE courses (
+	id int(10) primary key auto_increment,
+	course_id varchar (10),
+	name varchar (20),
+	description text); //create table courses
+
+
+INSERT INTO instructor (first_name, last_name, age, address_line_1, address_line_2, baranggay, city, postal)
+VALUES ("Kench", "Lawas", 23, NULL, NULL, "Sabang", "Danao", 6004); //inserting data to table instructor (INSERT INTO table_name (var1, var2) VALUES(data1, data2);)
+
+SELECT * FROM instructons; //shows all data in table instructor
+
+describe courses; //shows table courses information
+
+INSERT INTO courses (course_id, name, description)
+VALUES ("PC-318", "DBMS", "Course Description"); //inserting data to table courses
+
+ALTER TABLE students MODIFY COLUMN id INT AUTO_INCREMENT PRIMARY KEY; //updating the data in column "id" on the table students
+
+INSERT INTO students(first_name, last_name, age, address_line_1, address_line_2, baranggay, city, postal)
+VALUES ("Kench", "Lawas", 23, NULL, NULL, "Sabang", "Danao", 6004); //inserting data to table students
+
+SELECT * FROM students; //shows all data in table students
+
+
+SELECT COUNT(customerNumber) AS counted_customer FROM customers; //counts all the rows of customerNumber and update the name of the row
+
+SELECT * FROM customers LIMIT 10 offset 0; //shows data from 0 - 10 (limit = how many : offset = where to start)
+
+
+SELECT customerName AS name, phone, city FROM customers LIMIT 10 OFFSET 20; //shows data of customerName as "name", phone, and city from table customers
+
+
+SELECT orderNumber AS orders, priceEach AS price FROM orderdetails WHERE priceEach ‹ 100 LIMIT 10 OFFSET 0; //shows data on orderNumber and priceEach where price is less than 100
+
+SELECT SUM(priceEach) AS total_price FROM orderdetails WHERE orderNumber = 10100; //shows the sum of all prices of orderNumber=10100
+
+SELECT * FROM orderDetails ORDER BY priceEach DESC LIMIT 10 OFFSET 0; //shows orderDetails in descending order
+
+SELECT c.customerNumber AS id, c.customerName AS name, SUM(od.priceEach) AS total_price FROM customers AS c
+JOIN orders AS o ON o.customerNumber = c.customerNumber
+JOIN orderdetails AS od ON od.orderNumber = o.orderNumber
+WHERE c.customerNumber = 282;
+
+ACTIVITY:
+customerNumber=477
+SELECT customerName AS name, customerNumber AS number FROM customers WHERE customerNumber = 477;
+SELECT * FROM orders WHERE customerNumber = 477;
+SELECT SUM(priceEach) AS total_price FROM orderdetails WHERE orderNumber = 10139;
+
+
